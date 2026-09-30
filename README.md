@@ -1,4 +1,4 @@
-# Self-hosted Linux Infrastruktur
+# Self-hosted Linux-Infrastruktur
 
 Dieses Repository dokumentiert eine bereinigte Version meiner selbst betriebenen Linux-Infrastruktur für Automatisierungs- und AI-Anwendungen.
 
