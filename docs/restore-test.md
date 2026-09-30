@@ -94,10 +94,6 @@ Folgende Zeilenzahlen wurden gemessen:
 |---|---:|
 | `messages` | 37 |
 | `threads` | 13 |
-| `user_memory` | 0 |
-| `users` | 0 |
-
-Die Tabellen `users` und `user_memory` waren zum Zeitpunkt des Backups leer. Aus dem Restore-Test allein lässt sich nicht ableiten, ob diese Tabellen für den aktuellen Workflow erforderlich, optional oder noch ungenutzt sind. Die leeren Tabellen stellen keinen Restore-Fehler dar, da sie genauso wiederhergestellt wurden, wie sie im Backup enthalten waren.
 
 Von den 37 Nachrichten enthielten 25 ein gespeichertes Embedding. Alle vorhandenen Embeddings hatten 1536 Dimensionen.
 
@@ -138,8 +134,6 @@ Für den Vergleich wurden nur Zeilenzahlen aus den produktiven Datenbanken geles
 |---|---:|---:|
 | `messages` | 37 | 37 |
 | `threads` | 13 | 13 |
-| `user_memory` | 0 | 0 |
-| `users` | 0 | 0 |
 
 ### n8n-Datenbank
 
