@@ -1,0 +1,50 @@
+services:
+  n8n:
+    image: n8nio/n8n:2.37.10
+    container_name: n8n
+    restart: unless-stopped
+
+    env_file:
+      - ../.env
+
+    environment:
+      - NODE_EXTRA_CA_CERTS=/opt/custom-certificates/SSL.crt
+
+    # n8n is only exposed on localhost.
+    # Public HTTPS access is handled by Nginx on the host.
+    ports:
+      - "127.0.0.1:5678:5678"
+
+    volumes:
+      - /opt/n8n/data:/home/node/.n8n
+      - /opt/n8n/certs:/opt/custom-certificates
+
+    # Current limitation:
+    # n8n runs as root because of permissions problems encountered
+    # with the bind-mounted application data directory.
+    user: "0:0"
+
+    networks:
+      - n8n-network
+
+  task-runners:
+    image: n8nio/runners:2.37.10
+    container_name: n8n-task-runners
+    restart: unless-stopped
+
+    env_file:
+      - ../.env
+
+    depends_on:
+      - n8n
+
+    # Current limitation: see security documentation.
+    user: "0:0"
+
+    networks:
+      - n8n-network
+
+networks:
+  n8n-network:
+    name: n8n-shared-network
+    driver: bridge
